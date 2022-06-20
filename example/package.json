@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "im-selector": "^0.0.1"
+    "im-selector": "^0.0.2"
   }
 }

@@ -1,10 +1,10 @@
 lockfileVersion: 5.4
 
 specifiers:
-  im-selector: ^0.0.1
+  im-selector: ^0.0.2
 
 devDependencies:
-  im-selector: 0.0.1
+  im-selector: 0.0.2
 
 packages:
 
@@ -124,16 +124,11 @@ packages:
       entities: 4.3.0
     dev: true
 
-  /im-selector/0.0.1:
-    resolution: {integrity: sha512-ZSLT1Dz12HqGGo6ewzzOqBK/WhpfVqo7XtR/l7pIkHrEhDrwdtLaLyUMgeqENRE1nQlSsR2+IHswKDnZUCY+Dg==}
+  /im-selector/0.0.2:
+    resolution: {integrity: sha512-ytzdKN6AzrwE6fTyxhWP2K8UnpKwR8LBi7utrdbFGUUl2x9chCGoGthNsIkq+qPjQQH2FMv0h9qgki2FRlCWpQ==}
     dependencies:
       chalk: 4.1.2
       cheerio: 1.0.0-rc.11
-      mitt: 3.0.0
-    dev: true
-
-  /mitt/3.0.0:
-    resolution: {integrity: sha512-7dX2/10ITVyqh4aOSVI9gdape+t9l2/8QxHrFmUXu4EEUpdlxl6RudZUPZoc+zuY2hk1j7XxVroIVIan/pD/SQ==}
     dev: true
 
   /nth-check/2.1.1:

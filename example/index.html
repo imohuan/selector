@@ -50,8 +50,10 @@
         name: "im-selector",
         age: 100
       });
+
       console.log(parser.query({ cls: ".head::text", rules: ["trim"] }));
       console.log(parser.query({ cls: ".what::text|.dddd::text|.head::text", rules: ["trim"] }));
+      console.log(parser.query({ cls: "@div::text", rules: ["trim"] }));
     </script>
   </body>
 </html>
