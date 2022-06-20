@@ -1,10 +1,11 @@
 import { builtinModules } from "node:module";
-import { defineConfig } from "vite";
-import Dts from "vite-plugin-dts";
 import { resolve } from "path";
+import { defineConfig, UserConfigExport } from "vite";
+import Dts from "vite-plugin-dts";
+import { name, globalName } from "./package.json";
 
-export default defineConfig(({ command, mode }) => {
-  const option = {
+export default defineConfig(({ mode }) => {
+  const option: UserConfigExport = {
     clearScreen: true,
     optimizeDeps: {
       extensions: [".ts", ".js"]
@@ -18,13 +19,13 @@ export default defineConfig(({ command, mode }) => {
         // TODO 默认导出3中方式,这里需要根据自己的实际情况修改
         formats: ["cjs", "es", "iife"],
         // iife 模式的全局名称
-        name: "Lib",
+        name: globalName,
         fileName: (format) => {
-          return `lib-${format}.js`;
+          return `${name}-${format}.js`;
         }
       },
       rollupOptions: {
-        external: builtinModules.concat(["chalk"])
+        external: builtinModules.concat(["chalk", "cheerio"])
         // output.globals[name] 为external排除包的全局名称
         // output: { globals: { chalk: "Chalk" } },
       }
@@ -32,13 +33,15 @@ export default defineConfig(({ command, mode }) => {
     plugins: []
   };
 
-  if (mode === "production"){
+  if (mode === "production") {
     /** https://github.com/qmhc/vite-plugin-dts/blob/HEAD/README.zh-CN.md */
-    option.plugins.push(Dts({
-      outputDir: resolve(__dirname, "dist/types"),
-      skipDiagnostics: false,
-      logDiagnostics: true
-    }))
+    option.plugins!.push(
+      Dts({
+        outputDir: resolve(__dirname, "dist/types"),
+        skipDiagnostics: false,
+        logDiagnostics: true
+      })
+    );
   }
 
   return option;

@@ -1,31 +1,44 @@
 {
-  "name": "vite-lib",
-  "version": "0.0.0",
-  "description": "",
-  "keywords": [],
-  "author": "",
+  "name": "im-selector",
+  "globalName": "Selector",
+  "version": "0.0.1",
+  "description": "支持简单的字符串选择器",
+  "author": "imohuan",
   "license": "ISC",
+  "homepage": "https://github.com/imohuan",
+  "keywords": [
+    "parser",
+    "selector",
+    "html",
+    "json"
+  ],
   "files": [
     "dist",
     "package.json"
   ],
   "types": "./dist/types/index.d.ts",
-  "main": "./dist/lib-cjs.js",
-  "module": "./dist/lib-es.js",
+  "main": "./dist/im-selector-cjs.js",
+  "module": "./dist/im-selector-es.js",
+  "imports": {
+    "#parser": {
+      "node": "./src/dom/node.ts",
+      "default": "./src/dom/browser.ts"
+    }
+  },
   "exports": {
     ".": {
-      "import": "./dist/lib-es.js",
-      "require": "./dist/lib-cjs.js"
+      "import": "./dist/im-selector-es.js",
+      "require": "./dist/im-selector-cjs.js"
     }
   },
   "scripts": {
-    "dev": "nodemon --watch \"./src/index.ts\" --exec \"vite build --mode development && node ./dist/lib-cjs.js\"",
-    "esbuild:dev": "nodemon --watch \"./src/index.ts\" --exec \"esbuild --bundle src/index.ts --outfile=dist/index.js --minify --format=cjs --external:chalk && node ./dist/index.js\"",
     "build": "vite build",
     "test": "vitest --ui --open"
   },
   "dependencies": {
-    "chalk": "^4.1.2"
+    "chalk": "^4.1.2",
+    "cheerio": "1.0.0-rc.11",
+    "mitt": "^3.0.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
@@ -34,6 +47,7 @@
     "@types/prettier": "^2.6.3",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
+    "@vitest/ui": "^0.15.1",
     "eslint": "^8.17.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",

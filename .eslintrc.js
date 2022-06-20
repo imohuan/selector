@@ -23,7 +23,8 @@ module.exports = {
     "plugin:prettier/recommended"
   ],
   rules: {
-    "import/no-unresolved": [2, { ignore: ["^#[\\w\\d/\\-]+$"] }],
+    "import/no-unresolved": [2, { ignore: ["^#.+$"] }],
+    "import/extensions": 0,
     "vue/name-property-casing": "off",
     "prefer-const": "off",
     "@typescript-eslint/ban-ts-ignore": "off",
