@@ -1,7 +1,7 @@
 {
   "name": "im-selector",
   "globalName": "Selector",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "支持简单的字符串选择器",
   "author": "imohuan",
   "license": "ISC",
@@ -19,12 +19,6 @@
   "types": "./dist/types/index.d.ts",
   "main": "./dist/im-selector-cjs.js",
   "module": "./dist/im-selector-es.js",
-  "imports": {
-    "#parser": {
-      "node": "./src/dom/node.ts",
-      "default": "./src/dom/browser.ts"
-    }
-  },
   "exports": {
     ".": {
       "import": "./dist/im-selector-es.js",
@@ -32,13 +26,13 @@
     }
   },
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && pnpm build:iife",
+    "build:iife": "cross-env IIFE=TRUE vite build",
     "test": "vitest --ui --open"
   },
   "dependencies": {
     "chalk": "^4.1.2",
-    "cheerio": "1.0.0-rc.11",
-    "mitt": "^3.0.0"
+    "cheerio": "1.0.0-rc.11"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
@@ -48,12 +42,14 @@
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
     "@vitest/ui": "^0.15.1",
+    "cross-env": "^7.0.3",
     "eslint": "^8.17.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^9.1.0",
     "fs-extra": "^10.1.0",
     "lodash-es": "^4.17.21",
+    "mitt": "^3.0.0",
     "nodemon": "^2.0.16",
     "prettier": "^2.6.2",
     "rollup": "^2.75.6",

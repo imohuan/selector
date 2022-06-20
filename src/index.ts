@@ -1,5 +1,4 @@
 import Parser from "#parser";
-
 import { HTMLSelector, JSONSelector } from "./core/parser";
 
 export * from "./core/str";

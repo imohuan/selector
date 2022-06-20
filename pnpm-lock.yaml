@@ -10,6 +10,7 @@ specifiers:
   '@vitest/ui': ^0.15.1
   chalk: ^4.1.2
   cheerio: 1.0.0-rc.11
+  cross-env: ^7.0.3
   eslint: ^8.17.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-prettier: ^4.0.0
@@ -28,7 +29,6 @@ specifiers:
 dependencies:
   chalk: 4.1.2
   cheerio: 1.0.0-rc.11
-  mitt: 3.0.0
 
 devDependencies:
   '@types/fs-extra': 9.0.13
@@ -38,12 +38,14 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.28.0_7yumg2qjgbp7maccqlfhx2vudu
   '@typescript-eslint/parser': 5.28.0_ud6rd4xtew5bv4yhvkvu24pzm4
   '@vitest/ui': 0.15.1
+  cross-env: 7.0.3
   eslint: 8.17.0
   eslint-config-prettier: 8.5.0_eslint@8.17.0
   eslint-plugin-prettier: 4.0.0_nguwan5pqsajixjz57ffz7bkde
   eslint-plugin-vue: 9.1.1_eslint@8.17.0
   fs-extra: 10.1.0
   lodash-es: 4.17.21
+  mitt: 3.0.0
   nodemon: 2.0.16
   prettier: 2.7.0
   rollup: 2.75.6
@@ -638,6 +640,14 @@ packages:
       unique-string: 2.0.0
       write-file-atomic: 3.0.3
       xdg-basedir: 4.0.0
+    dev: true
+
+  /cross-env/7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
     dev: true
 
   /cross-spawn/7.0.3:
@@ -1667,7 +1677,7 @@ packages:
 
   /mitt/3.0.0:
     resolution: {integrity: sha512-7dX2/10ITVyqh4aOSVI9gdape+t9l2/8QxHrFmUXu4EEUpdlxl6RudZUPZoc+zuY2hk1j7XxVroIVIan/pD/SQ==}
-    dev: false
+    dev: true
 
   /mkdirp/1.0.4:
     resolution: {integrity: sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==}

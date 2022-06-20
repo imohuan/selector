@@ -1,28 +1,32 @@
-import { builtinModules } from "node:module";
+import { builtinModules } from "module";
 import { resolve } from "path";
 import { defineConfig, UserConfigExport } from "vite";
 import Dts from "vite-plugin-dts";
-import { name, globalName } from "./package.json";
+
+import { globalName, name } from "./package.json";
 
 export default defineConfig(({ mode }) => {
+  const isBrowser = process.env.IIFE === "TRUE";
   const option: UserConfigExport = {
-    clearScreen: true,
+    clearScreen: !isBrowser,
     optimizeDeps: {
       extensions: [".ts", ".js"]
     },
+    resolve: {
+      alias: {
+        "#parser": resolve(__dirname, "src/dom", isBrowser ? "browser.ts" : "node.ts")
+      }
+    },
     build: {
       outDir: resolve(__dirname, "./dist"),
+      emptyOutDir: !isBrowser,
       assetsDir: "",
-      sourcemap: true,
+      sourcemap: false,
       lib: {
         entry: resolve(__dirname, "./src/index.ts"),
-        // TODO 默认导出3中方式,这里需要根据自己的实际情况修改
-        formats: ["cjs", "es", "iife"],
-        // iife 模式的全局名称
-        name: globalName,
-        fileName: (format) => {
-          return `${name}-${format}.js`;
-        }
+        formats: isBrowser ? ["iife"] : ["cjs", "es"],
+        name: globalName, // iife 模式的全局名称
+        fileName: (format) => `${name}-${format}.js`
       },
       rollupOptions: {
         external: builtinModules.concat(["chalk", "cheerio"])
@@ -33,7 +37,7 @@ export default defineConfig(({ mode }) => {
     plugins: []
   };
 
-  if (mode === "production") {
+  if (!isBrowser && mode === "production") {
     /** https://github.com/qmhc/vite-plugin-dts/blob/HEAD/README.zh-CN.md */
     option.plugins!.push(
       Dts({
