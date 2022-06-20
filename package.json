@@ -1,7 +1,7 @@
 {
   "name": "im-selector",
   "globalName": "Selector",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "支持简单的字符串选择器",
   "author": "imohuan",
   "license": "ISC",
